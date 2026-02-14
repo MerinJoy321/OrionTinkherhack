@@ -14,6 +14,7 @@
 
 ### Hosted Project Link
 [mention your project hosted link here]
+orion-tinkherhack-k4hmdg4e4-merin-joys-projects.vercel.app
 
 ### Project Description
 Karigar is an AI-powered labour matching platform designed for Kerala. It allows users to describe their need in natural language (e.g., “Need plumber in Aluva today”), automatically categorizes the request, and displays available nearby workers instantly.
@@ -246,7 +247,7 @@ python script.py -v --format json data.json
 
 ### Video
 [Add your demo video link here - YouTube, Google Drive, etc.]
-
+https://drive.google.com/file/d/1caNoY03kakLfKwYy4Jd8E2H7Gc-Vzi8A/view?usp=sharing
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
 

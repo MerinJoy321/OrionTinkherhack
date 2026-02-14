@@ -4,6 +4,7 @@ import { Input, Button, Spin, Card, message } from "antd";
 import { RobotOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import { aiService } from "@/services/aiService";
 
 const { TextArea } = Input;
 
@@ -21,7 +22,7 @@ export default function AIChat() {
     const [analyzing, setAnalyzing] = useState(false);
     const [result, setResult] = useState(null);
 
-    const handleAnalyze = () => {
+    const handleAnalyze = async () => {
         if (!problem.trim()) {
             message.warning("Please describe your problem first.");
             return;
@@ -30,25 +31,21 @@ export default function AIChat() {
         setAnalyzing(true);
         setResult(null);
 
-        // Simulate AI Analysis
-        setTimeout(() => {
+        try {
+            const data = await aiService.predictCategory(problem);
             setAnalyzing(false);
 
-            // Simple keyword matching simulation
-            let skill = "General Help";
-            if (problem.toLowerCase().includes("water") || problem.toLowerCase().includes("pipe") || problem.toLowerCase().includes("leak")) {
-                skill = "Plumber";
-            } else if (problem.toLowerCase().includes("electric") || problem.toLowerCase().includes("light") || problem.toLowerCase().includes("power")) {
-                skill = "Electrician";
-            } else if (problem.toLowerCase().includes("wood") || problem.toLowerCase().includes("door") || problem.toLowerCase().includes("furniture")) {
-                skill = "Carpenter";
-            }
+            const skill = data.predicted_category;
 
             setResult({
                 skill,
                 message: `Based on your description, it looks like you need a ${skill}.`
             });
-        }, 2000);
+        } catch (error) {
+            setAnalyzing(false);
+            message.error("Failed to analyze problem. Please make sure the AI server is running.");
+            console.error(error);
+        }
     };
 
     const handleProceed = () => {
@@ -103,7 +100,7 @@ export default function AIChat() {
 
                         {analyzing ? (
                             <div style={{ padding: "20px" }}>
-                                <Spin tip="Analyzing your request..." />
+                                <Spin description="Analyzing your request..." />
                             </div>
                         ) : result ? (
                             <div className="fade-in" style={{

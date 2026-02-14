@@ -1,0 +1,106 @@
+:root {
+  /* Color Palette - Blue Theme */
+  --primary-blue: #0066FF;
+  --secondary-blue: #0052CC;
+  --accent-light: #E6F0FF;
+  --bg-white: #FFFFFF;
+  --bg-gray: #F4F7F6;
+  --text-dark: #1F2937;
+  --text-light: #6B7280;
+  --white: #FFFFFF;
+
+  /* Fonts */
+  --heading-font: var(--font-poppins), sans-serif;
+  --body-font: var(--font-inter), sans-serif;
+  --alt-font: var(--font-sora), sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: var(--text-dark);
+}
+
+.text-alt {
+  font-family: var(--alt-font);
+}
+
+/* Button Overrides */
+.primary-btn {
+  background: var(--primary-blue) !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 50px !important;
+  font-family: var(--heading-font) !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
+  transition: all 0.3s ease !important;
+}
+
+.primary-btn:hover {
+  background: var(--secondary-blue) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5);
+}
+
+.secondary-btn {
+  background: transparent !important;
+  border: 2px solid var(--primary-blue) !important;
+  color: var(--primary-blue) !important;
+  border-radius: 50px !important;
+  font-family: var(--heading-font) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.secondary-btn:hover {
+  background: var(--accent-light) !important;
+  color: var(--primary-blue) !important;
+  transform: translateY(-2px);
+}
+
+/* Card Hover */
+.hover-card {
+  transition: 0.3s ease;
+  border-radius: 20px !important;
+  background: white;
+  border: 1px solid #E5E7EB;
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  /* Soft shadow */
+  border-color: var(--primary-blue);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
